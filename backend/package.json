@@ -1,0 +1,33 @@
+{
+  "name": "menlo-backend",
+  "version": "1.0.0",
+  "description": "this is menlo's backend, which is a personalized website generator that is easy to use, free, and personalized.",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "ts-node dist/index.js",
+    "dev": "ts-node-dev --respawn src/index.ts",
+    "build": "tsc -p ."
+  },
+  "keywords": [
+    "menlo",
+    "server"
+  ],
+  "author": "Dirag Biswas",
+  "license": "ISC",
+  "dependencies": {
+    "@types/cors": "^2.8.6",
+    "@types/mongoose": "^5.7.29",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.21"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/node": "^14.0.14",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2",
+    "ts-node-dev": "^1.0.0-pre.50",
+    "typescript": "^3.9.6"
+  }
+}
