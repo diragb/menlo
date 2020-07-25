@@ -14,8 +14,8 @@ const Wrapper = styled.div`
   justify-content: center;
   width: 100%;
   max-width: 100%;
-  height: 4em;
-  background: #fff;
+  height: 9vh;
+  background: rgb(255 255 255 / 0.8);
   border-bottom: 1px #dfe6e9 solid;
   backdrop-filter: saturate(180%) blur(5px);
   transition: box-shadow 0.1s ease 0s;
