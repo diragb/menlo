@@ -21,6 +21,16 @@ connection.once("open", () => {
   console.log("connection between server and mongodb established");
 });
 
+// TODO: Handle server re-routing for all /* requests that are NOT /api/
+// https://ui.dev/react-router-cannot-get-url-refresh/
+// app.get('/*', (req: Request, res: Response) => {
+//   res.sendFile(path.join(__dirname, 'path/to/your/index.html'), (err) => {
+//     if (err) {
+//       res.status(500).send(err)
+//     }
+//   })
+// });
+
 app.get("/api", (req: Request, res: Response, next: NextFunction) => {
   res.send("hello");
 });

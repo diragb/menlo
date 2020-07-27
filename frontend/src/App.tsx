@@ -8,6 +8,7 @@ import { ROUTES } from "./routes";
 // Components:
 import Navbar from "./components/global/Navbar";
 import Landing from "./views/Landing";
+import Editor from "./views/Editor";
 
 // Functions:
 const App: React.FC = () => {
@@ -15,7 +16,8 @@ const App: React.FC = () => {
     <Router>
       <Navbar />
       <Switch>
-        <Route path={ROUTES.INDEX} component={Landing} />
+        <Route exact path={[ROUTES.INDEX, ROUTES.HOME]} component={Landing} />
+        <Route exact path={ROUTES.EDITOR} component={Editor} />
       </Switch>
     </Router>
   );
