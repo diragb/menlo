@@ -16,17 +16,55 @@ import {
   ProfilePicture,
   DetailsWrapper,
   DetailsBlock,
-  Name,
+  Title,
   Bio,
   SocialMediaIcons,
   SocialMediaIcon,
+  About,
+  AboutPictureWrapper,
+  AboutPictureSkeletonWrapper,
+  AboutPicture,
+  AboutDetails,
+  AboutBody,
+  MyWork,
+  Works,
+  Work,
+  WorkPictureWrapper,
+  WorkPicture,
+  WorkDetails,
+  WorkTitle,
+  WorkBody,
+  WorkLink,
 } from "./styles";
 
 // Functions:
 const Template = () => {
   // State:
   const [profilePictureLoaded, setProfilePictureLoaded] = useState(false);
+  const [aboutPictureLoaded, setAboutPictureLoaded] = useState(false);
   const [windowInnerWidth, setWindowInnerWidth] = useState(window.innerWidth);
+
+  // Temp:
+  const works = [
+    {
+      id: 1,
+      picture:
+        "https://images.pexels.com/photos/3046632/pexels-photo-3046632.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      title: "Underwater photography at a truly remarkable scale.",
+      body:
+        "Yes, I do underwater photography. Are you jealous yet of how amazing and OP I am? I'm far better than you are, you inconsequential rabbit.",
+      link: "https://www.aaronzarabi.com/",
+    },
+    {
+      id: 2,
+      picture:
+        "https://images.pexels.com/photos/2820884/pexels-photo-2820884.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      title: "Yes, I drive.",
+      body:
+        "Yes, I do underwater photography. Are you jealous yet of how amazing and OP I am?",
+      link: null,
+    },
+  ];
 
   // Effects:
   useEffect(() => {
@@ -66,10 +104,10 @@ const Template = () => {
             )}
             <DetailsWrapper>
               <DetailsBlock>
-                <Name>
+                <Title>
                   Jessica
                   <br /> Snafu
-                </Name>
+                </Title>
                 <Bio>WRITER. EDITOR. DAD.</Bio>
                 <SocialMediaIcons>
                   <SocialMediaIcon src={SOCIAL_MEDIA.FACEBOOK} />
@@ -102,6 +140,77 @@ const Template = () => {
               <></>
             )}
           </Cover>
+        </Flexbox>
+        <Flexbox>
+          <About>
+            <AboutPictureWrapper>
+              {aboutPictureLoaded === false && (
+                <AboutPictureSkeletonWrapper>
+                  <Skeleton
+                    height="15em"
+                    width={windowInnerWidth > 768 ? "30vw" : "80vw"}
+                  />
+                </AboutPictureSkeletonWrapper>
+              )}
+              <AboutPicture
+                src="https://images.pexels.com/photos/1724374/pexels-photo-1724374.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                onLoad={() => setAboutPictureLoaded(true)}
+                aboutPictureLoaded={aboutPictureLoaded}
+              />
+            </AboutPictureWrapper>
+            <AboutDetails>
+              <Title>About</Title>
+              <AboutBody>
+                Aaron Zarabi is a stand up comedian recently returning from his
+                American political exile as the only Jew in Iceland. Originally
+                from New York City, Aaron has taken on the European comedy scene
+                by force, garnering Fringe awards and selling out weekly shows
+                at Iceland's premiere comedy club.
+                <br />
+                <br />
+                Aaron has performed across the United States and Europe and is
+                now back on his home turf as aregular at West Side Comedy Club
+                and producing his monthly show's "White Sauce Hot Sauce" and
+                "KROWDWERK" at QED Astoria.
+                <br />
+                <br />
+                Catch him live weekly at comedy clubs all over New York City!
+              </AboutBody>
+            </AboutDetails>
+          </About>
+        </Flexbox>
+        <Flexbox>
+          <MyWork>
+            <Title>Works</Title>
+            <Works>
+              {works.map((work, workIndex) => {
+                return (
+                  <Work
+                    worksLength={works.length}
+                    workIndex={workIndex}
+                    key={work.id}
+                  >
+                    <WorkPictureWrapper>
+                      <WorkPicture src={work.picture} />
+                    </WorkPictureWrapper>
+                    <WorkDetails>
+                      <WorkTitle>{work.title}</WorkTitle>
+                      <WorkBody>
+                        {work.body}
+                        {work.link === null ? (
+                          <></>
+                        ) : (
+                          <WorkLink href={work.link} target="_blank">
+                            More.
+                          </WorkLink>
+                        )}
+                      </WorkBody>
+                    </WorkDetails>
+                  </Work>
+                );
+              })}
+            </Works>
+          </MyWork>
         </Flexbox>
       </Wrapper>
     </SkeletonTheme>

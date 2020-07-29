@@ -2,7 +2,11 @@
 import styled from "styled-components";
 
 // Typescript:
-import { ProfilePictureProps } from "./ts/interfaces";
+import {
+  ProfilePictureProps,
+  AboutPictureProps,
+  WorkProps,
+} from "./ts/interfaces";
 
 // Styles:
 export const Wrapper = styled.div`
@@ -62,7 +66,7 @@ export const DetailsBlock = styled.div`
   }
 `;
 
-export const Name = styled.div`
+export const Title = styled.div`
   margin-bottom: 0.1em;
   margin-top: 0;
   font-size: 7vw;
@@ -189,4 +193,125 @@ export const ProfilePicture = styled.img`
     props.profilePictureLoaded === true ? "1" : "0"};
   box-shadow: 0 30px 115px rgba(0, 0, 0, 0.6);
   transition: opacity 0.5s ease;
+`;
+
+export const About = styled.div`
+  width: 80vw;
+  margin: 5em 0;
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+export const AboutPictureWrapper = styled.div`
+  display: inline-block;
+  vertical-align: middle;
+  width: 40vw;
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 768px) {
+    width: 80vw;
+    margin-bottom: 2em;
+  }
+`;
+
+export const AboutPictureSkeletonWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5em;
+`;
+
+export const AboutPicture = styled.img`
+  width: ${(props: AboutPictureProps) =>
+    props.aboutPictureLoaded === true ? "30vw" : "0"};
+  border-radius: 0.5em;
+  opacity: ${(props: AboutPictureProps) =>
+    props.aboutPictureLoaded === true ? "1" : "0"};
+  box-shadow: 0 30px 115px rgba(0, 0, 0, 0.6);
+  transition: opacity 0.5s ease;
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 768px) {
+    width: ${(props: AboutPictureProps) =>
+      props.aboutPictureLoaded === true ? "80vw" : "0"};
+  }
+`;
+
+export const AboutDetails = styled.div`
+  width: 40vw;
+  display: inline-block;
+  vertical-align: middle;
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 768px) {
+    width: 80vw;
+  }
+`;
+
+export const AboutBody = styled.div`
+  font-size: 1.3em;
+`;
+
+export const MyWork = styled.div`
+  width: 80vw;
+  margin: 5em 0;
+  text-align: center;
+`;
+
+export const Works = styled.div`
+  width: 80vw;
+  margin-top: 2em;
+`;
+
+export const Work = styled.div`
+  display: inline-block;
+  width: ${(props: WorkProps) =>
+    props.worksLength === 0 ? 0 : 80 / props.worksLength}vw;
+  height: 20em;
+  transform: translateY(
+    ${(props: WorkProps) => (--props.worksLength - props.workIndex) * 4}em
+  );
+`;
+
+export const WorkPictureWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+
+export const WorkPicture = styled.img`
+  height: 100%;
+  border-radius: 0.5em;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+`;
+
+export const WorkDetails = styled.div`
+  width: 100%;
+  height: 100%;
+  margin-top: 2em;
+  font-size: 0.8em;
+`;
+
+export const WorkTitle = styled.div`
+  display: inline-block;
+  vertical-align: middle;
+  width: 60%;
+  font-weight: 600;
+  text-align: left;
+`;
+
+export const WorkBody = styled.div`
+  display: inline-block;
+  vertical-align: middle;
+  width: 60%;
+  text-align: left;
+`;
+
+export const WorkLink = styled.a`
+  margin-left: 0.3em;
+  font-weight: 600;
+  color: unset;
+  text-decoration: none;
 `;
