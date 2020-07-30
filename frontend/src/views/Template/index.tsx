@@ -1,6 +1,11 @@
 // Packages:
 import React, { useState, useEffect } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { connect } from "react-redux";
+
+// Typescript:
+import { InitialState } from "../../reducers/ts/interfaces";
+import { TemplatePropsInterface } from "./ts/interfaces";
 
 // Imports:
 import { SOCIAL_MEDIA } from "../../constants/icons";
@@ -37,8 +42,16 @@ import {
   WorkLink,
 } from "./styles";
 
+// Redux:
+const mapStateToProps = (state: InitialState) => {
+  // Return:
+  return {
+    theme: state.global.theme,
+  };
+};
+
 // Functions:
-const Template = () => {
+const Template = (props: TemplatePropsInterface) => {
   // State:
   const [profilePictureLoaded, setProfilePictureLoaded] = useState(false);
   const [aboutPictureLoaded, setAboutPictureLoaded] = useState(false);
@@ -60,9 +73,17 @@ const Template = () => {
       picture:
         "https://images.pexels.com/photos/2820884/pexels-photo-2820884.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       title: "Yes, I drive.",
-      body:
-        "Yes, I do underwater photography. Are you jealous yet of how amazing and OP I am?",
+      body: "Vroom vroom, nigga.",
       link: null,
+    },
+    {
+      id: 3,
+      picture:
+        "https://images.pexels.com/photos/3046632/pexels-photo-3046632.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      title: "Underwater photography at a truly remarkable scale.",
+      body:
+        "Yes, I do underwater photography. Are you jealous yet of how amazing and OP I am? I'm far better than you are, you inconsequential rabbit.",
+      link: "https://www.aaronzarabi.com/",
     },
   ];
 
@@ -81,7 +102,7 @@ const Template = () => {
   // Return:
   return (
     <SkeletonTheme color="#ccc">
-      <Wrapper>
+      <Wrapper theme={props.theme}>
         <Flexbox>
           <Cover>
             {windowInnerWidth > 768 ? (
@@ -98,6 +119,7 @@ const Template = () => {
                     src="https://thispersondoesnotexist.com/image"
                     onLoad={() => setProfilePictureLoaded(true)}
                     profilePictureLoaded={profilePictureLoaded}
+                    theme={props.theme}
                   />
                 </ProfilePictureWrapper>
               </PPMegaWrapper>
@@ -133,6 +155,7 @@ const Template = () => {
                     src="https://thispersondoesnotexist.com/image"
                     onLoad={() => setProfilePictureLoaded(true)}
                     profilePictureLoaded={profilePictureLoaded}
+                    theme={props.theme}
                   />
                 </ProfilePictureWrapper>
               </PPMegaWrapper>
@@ -156,6 +179,7 @@ const Template = () => {
                 src="https://images.pexels.com/photos/1724374/pexels-photo-1724374.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
                 onLoad={() => setAboutPictureLoaded(true)}
                 aboutPictureLoaded={aboutPictureLoaded}
+                theme={props.theme}
               />
             </AboutPictureWrapper>
             <AboutDetails>
@@ -191,21 +215,21 @@ const Template = () => {
                     key={work.id}
                   >
                     <WorkPictureWrapper>
-                      <WorkPicture src={work.picture} />
+                      <WorkPicture src={work.picture} theme={props.theme} />
+                      <WorkDetails>
+                        <WorkTitle>{work.title}</WorkTitle>
+                        <WorkBody>
+                          {work.body}
+                          {work.link === null ? (
+                            <></>
+                          ) : (
+                            <WorkLink href={work.link} target="_blank">
+                              More.
+                            </WorkLink>
+                          )}
+                        </WorkBody>
+                      </WorkDetails>
                     </WorkPictureWrapper>
-                    <WorkDetails>
-                      <WorkTitle>{work.title}</WorkTitle>
-                      <WorkBody>
-                        {work.body}
-                        {work.link === null ? (
-                          <></>
-                        ) : (
-                          <WorkLink href={work.link} target="_blank">
-                            More.
-                          </WorkLink>
-                        )}
-                      </WorkBody>
-                    </WorkDetails>
                   </Work>
                 );
               })}
@@ -218,4 +242,4 @@ const Template = () => {
 };
 
 // Exports:
-export default Template;
+export default connect(mapStateToProps, null)(Template);

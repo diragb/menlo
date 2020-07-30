@@ -11,7 +11,7 @@ import Landing from "./views/Landing";
 import Template from "./views/Template";
 
 // Functions:
-const App: React.FC = () => {
+const App = () => {
   return (
     <Router>
       <Navbar />

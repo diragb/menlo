@@ -1,17 +1,80 @@
 // Packages:
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 // Typescript:
 import {
+  WrapperProps,
   ProfilePictureProps,
   AboutPictureProps,
   WorkProps,
+  WorkPictureProps,
 } from "./ts/interfaces";
 
 // Styles:
+const ProfilePictureBoxShadowRGB = (props: ProfilePictureProps) =>
+  keyframes`
+    0% { box-shadow: ${
+      props.theme === "LIGHT"
+        ? "0 30px 115px rgba(0, 0, 0, 0.6)"
+        : "0 0px 115px rgba(50, 150, 150, 0.6)"
+    }; }
+    50% { box-shadow: ${
+      props.theme === "LIGHT"
+        ? "0 30px 115px rgba(0, 0, 0, 0.6)"
+        : "0 0px 115px rgba(150, 150, 50, 0.6)"
+    }; }
+    100% { box-shadow: ${
+      props.theme === "LIGHT"
+        ? "0 30px 115px rgba(0, 0, 0, 0.6)"
+        : "0 0px 115px rgba(150, 50, 150, 0.6)"
+    }; }
+`;
+
+const AboutPictureBoxShadowRGB = (props: AboutPictureProps) =>
+  keyframes`
+    0% { box-shadow: ${
+      props.theme === "LIGHT"
+        ? "0 30px 115px rgba(0, 0, 0, 0.6)"
+        : "0 0px 115px rgba(50, 150, 150, 0.6)"
+    }; }
+    50% { box-shadow: ${
+      props.theme === "LIGHT"
+        ? "0 30px 115px rgba(0, 0, 0, 0.6)"
+        : "0 0px 115px rgba(150, 150, 50, 0.6)"
+    }; }
+    100% { box-shadow: ${
+      props.theme === "LIGHT"
+        ? "0 30px 115px rgba(0, 0, 0, 0.6)"
+        : "0 0px 115px rgba(150, 50, 150, 0.6)"
+    }; }
+`;
+
+const WorkPictureBoxShadowRGB = (props: WorkPictureProps) =>
+  keyframes`
+    0% { box-shadow: ${
+      props.theme === "LIGHT"
+        ? "0 15px 40px rgba(0, 0, 0, 0.4)"
+        : "0 0 40px rgba(50, 150, 150, 0.4)"
+    }; }
+    50% { box-shadow: ${
+      props.theme === "LIGHT"
+        ? "0 15px 40px rgba(0, 0, 0, 0.4)"
+        : "0 0 40px rgba(150, 150, 50, 0.4)"
+    }; }
+    100% { box-shadow: ${
+      props.theme === "LIGHT"
+        ? "0 15px 40px rgba(0, 0, 0, 0.4)"
+        : "0 0 40px rgba(150, 50, 150, 0.4)"
+    }; }
+`;
+
 export const Wrapper = styled.div`
   position: relative;
   margin-top: -9vh;
+  background: ${(props: WrapperProps) =>
+    props.theme === "DARK" ? "#0a0908" : "#f2f3f4"};
+  color: ${(props: WrapperProps) =>
+    props.theme === "DARK" ? "#f2f3f4" : "#0a0908"};
 `;
 
 export const Flexbox = styled.div`
@@ -71,7 +134,6 @@ export const Title = styled.div`
   margin-top: 0;
   font-size: 7vw;
   font-weight: 800;
-  color: #0a0908;
   overflow-x: hidden;
 
   /* Extra small devices (phones, 600px and down) */
@@ -191,7 +253,11 @@ export const ProfilePicture = styled.img`
   border-radius: 0.5em;
   opacity: ${(props: ProfilePictureProps) =>
     props.profilePictureLoaded === true ? "1" : "0"};
-  box-shadow: 0 30px 115px rgba(0, 0, 0, 0.6);
+  animation-name: ${(props: ProfilePictureProps) =>
+    ProfilePictureBoxShadowRGB(props)};
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
   transition: opacity 0.5s ease;
 `;
 
@@ -230,7 +296,11 @@ export const AboutPicture = styled.img`
   border-radius: 0.5em;
   opacity: ${(props: AboutPictureProps) =>
     props.aboutPictureLoaded === true ? "1" : "0"};
-  box-shadow: 0 30px 115px rgba(0, 0, 0, 0.6);
+  animation-name: ${(props: AboutPictureProps) =>
+    AboutPictureBoxShadowRGB(props)};
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
   transition: opacity 0.5s ease;
 
   /* Extra small devices (phones, 600px and down) */
@@ -264,6 +334,13 @@ export const MyWork = styled.div`
 export const Works = styled.div`
   width: 80vw;
   margin-top: 2em;
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const Work = styled.div`
@@ -274,6 +351,14 @@ export const Work = styled.div`
   transform: translateY(
     ${(props: WorkProps) => (--props.worksLength - props.workIndex) * 4}em
   );
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 768px) {
+    width: 80vw;
+    height: unset;
+    margin-bottom: 3em;
+    transform: unset;
+  }
 `;
 
 export const WorkPictureWrapper = styled.div`
@@ -282,9 +367,15 @@ export const WorkPictureWrapper = styled.div`
 `;
 
 export const WorkPicture = styled.img`
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   border-radius: 0.5em;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  animation-name: ${(props: WorkPictureProps) =>
+    WorkPictureBoxShadowRGB(props)};
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 `;
 
 export const WorkDetails = styled.div`

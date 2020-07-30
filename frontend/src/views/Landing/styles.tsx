@@ -4,12 +4,22 @@ import { ParallaxBanner } from "react-scroll-parallax";
 import { Link } from "react-router-dom";
 
 // Typescript:
-import { TitleProps } from "./ts/interfaces";
+import {
+  WrapperProps,
+  IntroductionProps,
+  TitleProps,
+  ButtonProps,
+  FeaturesProps,
+  FeatureTitleProps,
+  FooterProps,
+} from "./ts/interfaces";
 
 // Styles:
 export const Wrapper = styled.div`
   position: relative;
   margin-top: -9vh;
+  background: ${(props: WrapperProps) =>
+    props.theme === "DARK" ? "#f2f3f4" : "#0a0908"};
 `;
 
 export const Flexbox = styled.div`
@@ -29,6 +39,8 @@ export const Introduction = styled.div`
   min-width: 80vw;
   min-height: 100vh;
   padding: 0vh 10vw;
+  background: ${(props: IntroductionProps) =>
+    props.theme === "DARK" ? "#000000" : "#f2f3f4"};
 `;
 
 export const IntroductionBlock = styled.div`
@@ -38,7 +50,8 @@ export const IntroductionBlock = styled.div`
 export const Title = styled.div`
   font-size: 7em;
   font-weight: 800;
-  color: #0a0908;
+  color: ${(props: TitleProps) =>
+    props.theme === "DARK" ? "#f2f3f4" : "#0a0908"};
   opacity: ${(props: TitleProps) => (props.viewRendered === true ? "1" : "0")};
   transform: translate(
     0,
@@ -100,9 +113,12 @@ export const Button = styled.div`
   transition: all 0.25s ease;
 
   &:hover {
-    color: #0a0908;
+    color: ${(props: ButtonProps) =>
+      props.theme === "DARK" ? "#f2f3f4" : "#0a0908"};
     background: unset;
-    border: 1px solid #0a0908;
+    border: 1px solid
+      ${(props: ButtonProps) =>
+        props.theme === "DARK" ? "#f2f3f4" : "#0a0908"};
     transition: all 0.25s ease;
   }
 
@@ -112,9 +128,12 @@ export const Button = styled.div`
 `;
 
 export const SolidButton = styled(Button)`
-  color: #f2f3f4;
-  background: #0a0908;
-  border: 1px solid #0a0908;
+  color: ${(props: ButtonProps) =>
+    props.theme === "DARK" ? "#0a0908" : "#f2f3f4"};
+  background: ${(props: ButtonProps) =>
+    props.theme === "DARK" ? "#f2f3f4" : "#0a0908"};
+  border: 1px solid
+    ${(props: ButtonProps) => (props.theme === "DARK" ? "#f2f3f4" : "#0a0908")};
 `;
 
 export const HollowButton = styled(Button)`
@@ -122,7 +141,10 @@ export const HollowButton = styled(Button)`
   border: 1px solid #c3c3c3;
 `;
 
-export const Features = styled.div``;
+export const Features = styled.div`
+  background: ${(props: FeaturesProps) =>
+    props.theme === "DARK" ? "#000" : "#f2f3f4"};
+`;
 
 export const Feature = styled.div`
   position: relative;
@@ -144,7 +166,10 @@ export const FeatureTitle = styled.div`
   margin-left: 0.1em;
   font-size: 7em;
   font-weight: 800;
-  color: #0a0908;
+  color: ${(props: FeatureTitleProps) =>
+    props.theme === "DARK" ? "#f2f3f4" : "#0a0908"};
+  text-shadow: ${(props: FeatureTitleProps) =>
+    props.theme === "DARK" ? "0px 0px 75px rgba(0, 0, 0, 1)" : "unset"};
 
   /* SUPER small devices (smol phones, 360px and down) */
   @media only screen and (max-width: 600px) {
@@ -181,6 +206,9 @@ export const FeatureDescription = styled.div`
   font-size: 1em;
   font-weight: 600;
   color: #323031;
+  filter: invert(
+    ${(props: FeatureTitleProps) => (props.theme === "DARK" ? 1 : 0)}
+  );
 `;
 
 export const FeatureBackground = styled(ParallaxBanner)`
@@ -195,16 +223,21 @@ export const BeautifulFeatureBackground = styled(FeatureBackground)`
 `;
 
 export const BeautifulFeatureTitle = styled(FeatureTitle)`
-  color: #f2f3f4;
+  color: ${(props: FeatureTitleProps) =>
+    props.theme === "DARK" ? "#f2f3f4" : "#0a0908"};
   text-shadow: 0px 0px 75px rgba(0, 0, 0, 1);
 `;
 
 export const BeautifulFeatureDescription = styled(FeatureDescription)`
-  color: #f2f3f4;
+  color: ${(props: FeatureTitleProps) =>
+    props.theme === "DARK" ? "#0a0908" : "#f2f3f4"};
   text-shadow: 0px 0px 12px rgba(0, 0, 0, 1);
 `;
 
-export const TryNow = styled(Feature)``;
+export const TryNow = styled(Feature)`
+  background: ${(props: FeaturesProps) =>
+    props.theme === "DARK" ? "#000" : "#f2f3f4"};
+`;
 
 export const TryNowBlock = styled(FeatureBlock)``;
 
@@ -215,8 +248,10 @@ export const Footer = styled.footer`
   height: 55vh;
   padding: 5vh 0vw;
   padding-bottom: 2.5vh;
-  background: #fff;
-  color: #212529;
+  background: ${(props: FooterProps) =>
+    props.theme === "DARK" ? "#0a0908" : "#fff"};
+  color: ${(props: FooterProps) =>
+    props.theme === "DARK" ? "#dedad6" : "#212529"};
 `;
 
 export const Categories = styled.div`
@@ -249,7 +284,7 @@ export const Ending = styled.div`
   justify-content: center;
   align-items: center;
   width: 80vw;
-  height: 15vh;
+  height: 14vh;
   padding: 0vh 10vw;
 `;
 

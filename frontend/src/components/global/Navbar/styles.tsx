@@ -2,6 +2,9 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+// Typescript:
+import { WrapperProps } from "./ts/interfaces";
+
 // Styles:
 export const Wrapper = styled.div`
   position: sticky;
@@ -12,8 +15,11 @@ export const Wrapper = styled.div`
   width: 100%;
   max-width: 100%;
   height: 9vh;
-  background: rgb(255 255 255 / 0.8);
-  border-bottom: 1px #dfe6e9 solid;
+  background: ${(props: WrapperProps) =>
+    props.theme === "DARK" ? "rgb(0 0 0 / 0.8)" : "rgb(255 255 255 / 0.8)"};
+  border-bottom: 1px
+    ${(props: WrapperProps) => (props.theme === "DARK" ? "#201916" : "#dfe6e9")}
+    solid;
   backdrop-filter: saturate(180%) blur(5px);
   transition: box-shadow 0.1s ease 0s;
 `;

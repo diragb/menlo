@@ -1,11 +1,10 @@
-// Constants:
-// import {
-//   TOGGLE_PLAYER_VISIBILITY,
-//   UPDATE_PLAYER_URL,
-//   TOGGLE_TIMER_VISIBILITY,
-// } from "../constants/action-types";
+// Typescript:
+import { ToggleTheme } from "./ts/interfaces";
 
-// // Exports:
-// export const togglePlayerVisibility = (payload: any) => {
-//   return { type: TOGGLE_PLAYER_VISIBILITY, payload };
-// };
+// Constants:
+import { TOGGLE_THEME } from "../constants/action-types";
+
+// Exports:
+export const toggleTheme: ToggleTheme = (payload) => {
+  return { type: TOGGLE_THEME, payload };
+};

@@ -1,27 +1,34 @@
-// Packages:
-import { combineReducers, AnyAction } from "redux";
+// Typescript:
+import { ActionInterface, InitialState } from "./ts/interfaces";
 
 // Constants:
-// import {
-//   TOGGLE_PLAYER_VISIBILITY,
-//   UPDATE_PLAYER_URL,
-//   TOGGLE_TIMER_VISIBILITY,
-// } from "../constants/action-types";
+import { TOGGLE_THEME } from "../constants/action-types";
 
-const initialState = {
-  global: {},
+import { THEME } from "../constants";
+
+const initialState: InitialState = {
+  global: {
+    theme: THEME.DARK,
+  },
 };
 
 // Functions:
-const globalReducer = (state = initialState, action: AnyAction) => {
+const globalReducer = (state = initialState, action: ActionInterface) => {
   switch (action.type) {
+    case TOGGLE_THEME:
+      return {
+        ...state,
+        global: {
+          theme: action.payload,
+        },
+      };
     default:
       return state;
   }
 };
 
-const rootReducer = combineReducers({
-  global: globalReducer,
-});
+// const rootReducer = combineReducers({
+//   global: globalReducer,
+// });
 
-export default rootReducer;
+export default globalReducer;
