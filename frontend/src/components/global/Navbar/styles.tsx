@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 // Typescript:
-import { WrapperProps } from "./ts/interfaces";
+import { WrapperProps, LightBulbProps } from "./ts/interfaces";
 
 // Styles:
 export const Wrapper = styled.div`
@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
     ${(props: WrapperProps) => (props.theme === "DARK" ? "#201916" : "#dfe6e9")}
     solid;
   backdrop-filter: saturate(180%) blur(5px);
-  transition: box-shadow 0.1s ease 0s;
+  transition: all 0.25s ease;
 `;
 
 export const Container = styled.div`
@@ -36,4 +36,20 @@ export const CustomLink = styled(Link)`
 
 export const Icon = styled.img`
   width: 2.5em;
+`;
+
+export const LeftContainer = styled.div`
+  position: absolute;
+  left: 5vw;
+  display: flex;
+  align-items: center;
+  height: 100%;
+`;
+
+export const LightBulb = styled.img`
+  width: 1em;
+  filter: invert(
+    ${(props: LightBulbProps) => (props.theme === "DARK" ? 1 : 0)}
+  );
+  cursor: pointer;
 `;

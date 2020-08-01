@@ -1,5 +1,6 @@
 // Packages:
 import React from "react";
+import { Dispatch } from "redux";
 import { connect } from "react-redux";
 
 // Typescript:
@@ -14,27 +15,17 @@ import { LIGHT_BULB } from "../../../constants/icons";
 import { ROUTES } from "../../../routes";
 
 // Styles:
-import { Wrapper, Container, CustomLink, Icon } from "./styles";
-import styled from "styled-components";
-
-const RightContainer = styled.div`
-  position: absolute;
-  right: 5vw;
-  display: flex;
-  align-items: center;
-  height: 100%;
-`;
-
-const LightBulb = styled.img`
-  width: 1.5em;
-  filter: invert(1);
-`;
+import {
+  Wrapper,
+  Container,
+  CustomLink,
+  Icon,
+  LeftContainer,
+  LightBulb,
+} from "./styles";
 
 // Redux:
-// import {
-//   toggleTheme
-// } from "../../../actions";
-// import { Dispatch } from "redux";
+import { toggleTheme } from "../../../actions";
 
 const mapStateToProps = (state: InitialState) => {
   return {
@@ -42,26 +33,33 @@ const mapStateToProps = (state: InitialState) => {
   };
 };
 
-// const mapDispatchToProps = (dispatch: Dispatch) => {
-//   return {
-//     toggleTheme: (newTheme) => dispatch(toggleTheme(newTheme))
-//   };
-// }
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return {
+    toggleTheme: (newTheme: "DARK" | "LIGHT") =>
+      dispatch(toggleTheme(newTheme)),
+  };
+};
 
 // Functions:
 const Navbar = (props: NavbarPropsInterface) => {
   return (
     <Wrapper theme={props.theme}>
+      <LeftContainer>
+        <LightBulb
+          src={LIGHT_BULB}
+          theme={props.theme}
+          onClick={() =>
+            props.toggleTheme(props.theme === "DARK" ? "LIGHT" : "DARK")
+          }
+        />
+      </LeftContainer>
       <Container>
         <CustomLink to={ROUTES.INDEX}>
           <Icon src={LOGO} />
         </CustomLink>
       </Container>
-      <RightContainer>
-        <LightBulb src={LIGHT_BULB} />
-      </RightContainer>
     </Wrapper>
   );
 };
 
-export default connect(mapStateToProps, null)(Navbar);
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
