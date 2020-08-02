@@ -1,19 +1,23 @@
+// Typescript:
+import { ThemeType } from "../../../constants/ts/interfaces";
+
+// Exports:
 export interface TemplatePropsInterface {
-  theme: "DARK" | "LIGHT";
+  theme: ThemeType;
 }
 
 export interface WrapperProps {
-  theme: "DARK" | "LIGHT";
+  theme: ThemeType;
 }
 
 export interface ProfilePictureProps {
   profilePictureLoaded: boolean;
-  theme: "DARK" | "LIGHT";
+  theme: ThemeType;
 }
 
 export interface AboutPictureProps {
   aboutPictureLoaded: boolean;
-  theme: "DARK" | "LIGHT";
+  theme: ThemeType;
 }
 
 export interface WorkProps {
@@ -22,5 +26,5 @@ export interface WorkProps {
 }
 
 export interface WorkPictureProps {
-  theme: "DARK" | "LIGHT";
+  theme: ThemeType;
 }

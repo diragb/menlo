@@ -1,16 +1,20 @@
+// Typescript:
+import { ThemeType } from "../../../../constants/ts/interfaces";
+
+// Exports:
 export interface NewTheme {
-  theme: "DARK" | "LIGHT";
+  theme: ThemeType;
 }
 
 export interface NavbarPropsInterface {
-  theme?: "DARK" | "LIGHT";
-  toggleTheme?: any;
+  theme: ThemeType;
+  toggleTheme: (newTheme: ThemeType) => void;
 }
 
 export interface WrapperProps {
-  theme: "DARK" | "LIGHT";
+  theme: ThemeType;
 }
 
 export interface LightBulbProps {
-  theme: "DARK" | "LIGHT";
+  theme: ThemeType;
 }

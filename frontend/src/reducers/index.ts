@@ -8,7 +8,7 @@ import { THEME } from "../constants";
 
 const initialState: InitialState = {
   global: {
-    theme: THEME.DARK,
+    theme: THEME.LIGHT,
   },
 };
 
@@ -31,4 +31,5 @@ const globalReducer = (state = initialState, action: ActionInterface) => {
 //   global: globalReducer,
 // });
 
+// Exports:
 export default globalReducer;

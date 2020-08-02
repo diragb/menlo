@@ -1,7 +1,8 @@
 // Constants:
-import { ThemeType } from "./ts/interfaces";
+import { ThemeObjectType } from "./ts/interfaces";
 
-export const THEME: ThemeType = {
+// Exports:
+export const THEME: ThemeObjectType = {
   DARK: "DARK",
   LIGHT: "LIGHT",
 };

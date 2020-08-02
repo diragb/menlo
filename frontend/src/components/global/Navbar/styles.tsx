@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 // Typescript:
 import { WrapperProps, LightBulbProps } from "./ts/interfaces";
 
+// Constants:
+import { THEME } from "../../../constants";
+
 // Styles:
 export const Wrapper = styled.div`
   position: sticky;
@@ -16,9 +19,10 @@ export const Wrapper = styled.div`
   max-width: 100%;
   height: 9vh;
   background: ${(props: WrapperProps) =>
-    props.theme === "DARK" ? "rgb(0 0 0 / 0.8)" : "rgb(255 255 255 / 0.8)"};
+    props.theme === THEME.DARK ? "rgb(0 0 0 / 0.8)" : "rgb(255 255 255 / 0.8)"};
   border-bottom: 1px
-    ${(props: WrapperProps) => (props.theme === "DARK" ? "#201916" : "#dfe6e9")}
+    ${(props: WrapperProps) =>
+      props.theme === THEME.DARK ? "#201916" : "#dfe6e9"}
     solid;
   backdrop-filter: saturate(180%) blur(5px);
   transition: all 0.25s ease;
@@ -49,7 +53,7 @@ export const LeftContainer = styled.div`
 export const LightBulb = styled.img`
   width: 1em;
   filter: invert(
-    ${(props: LightBulbProps) => (props.theme === "DARK" ? 1 : 0)}
+    ${(props: LightBulbProps) => (props.theme === THEME.DARK ? 1 : 0)}
   );
   cursor: pointer;
 `;

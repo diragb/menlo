@@ -1,32 +1,36 @@
+// Typescript:
+import { ThemeType } from "../../../constants/ts/interfaces";
+
+// Exports:
 export interface LandingPropsInterface {
-  theme: "DARK" | "LIGHT";
+  theme: ThemeType;
 }
 
 export interface WrapperProps {
-  theme: "DARK" | "LIGHT";
+  theme: ThemeType;
 }
 
 export interface IntroductionProps {
-  theme: "DARK" | "LIGHT";
+  theme: ThemeType;
 }
 
 export interface TitleProps {
   viewRendered: boolean;
-  theme: "DARK" | "LIGHT";
+  theme: ThemeType;
 }
 
 export interface ButtonProps {
-  theme: "DARK" | "LIGHT";
+  theme: ThemeType;
 }
 
 export interface FeaturesProps {
-  theme: "DARK" | "LIGHT";
+  theme: ThemeType;
 }
 
 export interface FeatureTitleProps {
-  theme: "DARK" | "LIGHT";
+  theme: ThemeType;
 }
 
 export interface FooterProps {
-  theme: "DARK" | "LIGHT";
+  theme: ThemeType;
 }

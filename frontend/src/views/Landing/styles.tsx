@@ -14,12 +14,15 @@ import {
   FooterProps,
 } from "./ts/interfaces";
 
+// Constants:
+import { THEME } from "../../constants";
+
 // Styles:
 export const Wrapper = styled.div`
   position: relative;
   margin-top: -9vh;
   background: ${(props: WrapperProps) =>
-    props.theme === "DARK" ? "#f2f3f4" : "#0a0908"};
+    props.theme === THEME.DARK ? "#f2f3f4" : "#0a0908"};
   transition: all 0.25s ease;
 `;
 
@@ -41,7 +44,7 @@ export const Introduction = styled.div`
   min-height: 100vh;
   padding: 0vh 10vw;
   background: ${(props: IntroductionProps) =>
-    props.theme === "DARK" ? "#000000" : "#f2f3f4"};
+    props.theme === THEME.DARK ? "#000000" : "#f2f3f4"};
   transition: all 0.25s ease;
 `;
 
@@ -53,7 +56,7 @@ export const Title = styled.div`
   font-size: 7em;
   font-weight: 800;
   color: ${(props: TitleProps) =>
-    props.theme === "DARK" ? "#f2f3f4" : "#0a0908"};
+    props.theme === THEME.DARK ? "#f2f3f4" : "#0a0908"};
   opacity: ${(props: TitleProps) => (props.viewRendered === true ? "1" : "0")};
   transform: translate(
     0,
@@ -116,11 +119,11 @@ export const Button = styled.div`
 
   &:hover {
     color: ${(props: ButtonProps) =>
-      props.theme === "DARK" ? "#f2f3f4" : "#0a0908"};
+      props.theme === THEME.DARK ? "#f2f3f4" : "#0a0908"};
     background: unset;
     border: 1px solid
       ${(props: ButtonProps) =>
-        props.theme === "DARK" ? "#f2f3f4" : "#0a0908"};
+        props.theme === THEME.DARK ? "#f2f3f4" : "#0a0908"};
     transition: all 0.25s ease;
   }
 
@@ -131,11 +134,12 @@ export const Button = styled.div`
 
 export const SolidButton = styled(Button)`
   color: ${(props: ButtonProps) =>
-    props.theme === "DARK" ? "#0a0908" : "#f2f3f4"};
+    props.theme === THEME.DARK ? "#0a0908" : "#f2f3f4"};
   background: ${(props: ButtonProps) =>
-    props.theme === "DARK" ? "#f2f3f4" : "#0a0908"};
+    props.theme === THEME.DARK ? "#f2f3f4" : "#0a0908"};
   border: 1px solid
-    ${(props: ButtonProps) => (props.theme === "DARK" ? "#f2f3f4" : "#0a0908")};
+    ${(props: ButtonProps) =>
+      props.theme === THEME.DARK ? "#f2f3f4" : "#0a0908"};
 `;
 
 export const HollowButton = styled(Button)`
@@ -145,7 +149,7 @@ export const HollowButton = styled(Button)`
 
 export const Features = styled.div`
   background: ${(props: FeaturesProps) =>
-    props.theme === "DARK" ? "#000" : "#f2f3f4"};
+    props.theme === THEME.DARK ? "#000" : "#f2f3f4"};
   transition: all 0.25s ease;
 `;
 
@@ -170,9 +174,9 @@ export const FeatureTitle = styled.div`
   font-size: 7em;
   font-weight: 800;
   color: ${(props: FeatureTitleProps) =>
-    props.theme === "DARK" ? "#f2f3f4" : "#0a0908"};
+    props.theme === THEME.DARK ? "#f2f3f4" : "#0a0908"};
   text-shadow: ${(props: FeatureTitleProps) =>
-    props.theme === "DARK" ? "0px 0px 75px rgba(0, 0, 0, 1)" : "unset"};
+    props.theme === THEME.DARK ? "0px 0px 75px rgba(0, 0, 0, 1)" : "unset"};
   transition: all 0.25s ease;
 
   /* SUPER small devices (smol phones, 360px and down) */
@@ -211,7 +215,7 @@ export const FeatureDescription = styled.div`
   font-weight: 600;
   color: #323031;
   filter: invert(
-    ${(props: FeatureTitleProps) => (props.theme === "DARK" ? 1 : 0)}
+    ${(props: FeatureTitleProps) => (props.theme === THEME.DARK ? 1 : 0)}
   );
   transition: all 0.25s ease;
 `;
@@ -229,22 +233,22 @@ export const BeautifulFeatureBackground = styled(FeatureBackground)`
 
 export const BeautifulFeatureTitle = styled(FeatureTitle)`
   color: ${(props: FeatureTitleProps) =>
-    props.theme === "DARK" ? "#f2f3f4" : "#f2f3f4"};
+    props.theme === THEME.DARK ? "#f2f3f4" : "#f2f3f4"};
   text-shadow: 0px 0px 75px rgba(0, 0, 0, 1);
 `;
 
 export const BeautifulFeatureDescription = styled(FeatureDescription)`
   color: ${(props: FeatureTitleProps) =>
-    props.theme === "DARK" ? "#0a0908" : "#f2f3f4"};
+    props.theme === THEME.DARK ? "#0a0908" : "#f2f3f4"};
   text-shadow: ${(props: FeatureTitleProps) =>
-    props.theme === "DARK"
+    props.theme === THEME.DARK
       ? "0px 0px 12px rgba(255, 255, 255, 1)"
       : "0px 0px 12px rgba(0, 0, 0, 1)"};
 `;
 
 export const TryNow = styled(Feature)`
   background: ${(props: FeaturesProps) =>
-    props.theme === "DARK" ? "#000" : "#f2f3f4"};
+    props.theme === THEME.DARK ? "#000000" : "#f2f3f4"};
   transition: all 0.25s ease;
 `;
 
@@ -258,9 +262,9 @@ export const Footer = styled.footer`
   padding: 5vh 0vw;
   padding-bottom: 2.5vh;
   background: ${(props: FooterProps) =>
-    props.theme === "DARK" ? "#0a0908" : "#fff"};
+    props.theme === THEME.DARK ? "#0a0908" : "#fff"};
   color: ${(props: FooterProps) =>
-    props.theme === "DARK" ? "#dedad6" : "#212529"};
+    props.theme === THEME.DARK ? "#dedad6" : "#212529"};
   transition: all 0.25s ease;
 `;
 

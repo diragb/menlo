@@ -10,21 +10,24 @@ import {
   WorkPictureProps,
 } from "./ts/interfaces";
 
+// Constants:
+import { THEME } from "../../constants";
+
 // Styles:
 const ProfilePictureBoxShadowRGB = (props: ProfilePictureProps) =>
   keyframes`
     0% { box-shadow: ${
-      props.theme === "LIGHT"
+      props.theme === THEME.LIGHT
         ? "0 30px 115px rgba(0, 0, 0, 0.6)"
         : "0 0px 115px rgba(50, 150, 150, 0.6)"
     }; }
     50% { box-shadow: ${
-      props.theme === "LIGHT"
+      props.theme === THEME.LIGHT
         ? "0 30px 115px rgba(0, 0, 0, 0.6)"
         : "0 0px 115px rgba(150, 150, 50, 0.6)"
     }; }
     100% { box-shadow: ${
-      props.theme === "LIGHT"
+      props.theme === THEME.LIGHT
         ? "0 30px 115px rgba(0, 0, 0, 0.6)"
         : "0 0px 115px rgba(150, 50, 150, 0.6)"
     }; }
@@ -33,17 +36,17 @@ const ProfilePictureBoxShadowRGB = (props: ProfilePictureProps) =>
 const AboutPictureBoxShadowRGB = (props: AboutPictureProps) =>
   keyframes`
     0% { box-shadow: ${
-      props.theme === "LIGHT"
+      props.theme === THEME.LIGHT
         ? "0 30px 115px rgba(0, 0, 0, 0.6)"
         : "0 0px 115px rgba(50, 150, 150, 0.6)"
     }; }
     50% { box-shadow: ${
-      props.theme === "LIGHT"
+      props.theme === THEME.LIGHT
         ? "0 30px 115px rgba(0, 0, 0, 0.6)"
         : "0 0px 115px rgba(150, 150, 50, 0.6)"
     }; }
     100% { box-shadow: ${
-      props.theme === "LIGHT"
+      props.theme === THEME.LIGHT
         ? "0 30px 115px rgba(0, 0, 0, 0.6)"
         : "0 0px 115px rgba(150, 50, 150, 0.6)"
     }; }
@@ -52,17 +55,17 @@ const AboutPictureBoxShadowRGB = (props: AboutPictureProps) =>
 const WorkPictureBoxShadowRGB = (props: WorkPictureProps) =>
   keyframes`
     0% { box-shadow: ${
-      props.theme === "LIGHT"
+      props.theme === THEME.LIGHT
         ? "0 15px 40px rgba(0, 0, 0, 0.4)"
         : "0 0 40px rgba(50, 150, 150, 0.4)"
     }; }
     50% { box-shadow: ${
-      props.theme === "LIGHT"
+      props.theme === THEME.LIGHT
         ? "0 15px 40px rgba(0, 0, 0, 0.4)"
         : "0 0 40px rgba(150, 150, 50, 0.4)"
     }; }
     100% { box-shadow: ${
-      props.theme === "LIGHT"
+      props.theme === THEME.LIGHT
         ? "0 15px 40px rgba(0, 0, 0, 0.4)"
         : "0 0 40px rgba(150, 50, 150, 0.4)"
     }; }
@@ -72,9 +75,9 @@ export const Wrapper = styled.div`
   position: relative;
   margin-top: -9vh;
   background: ${(props: WrapperProps) =>
-    props.theme === "DARK" ? "#0a0908" : "#f2f3f4"};
+    props.theme === THEME.DARK ? "#0a0908" : "#f2f3f4"};
   color: ${(props: WrapperProps) =>
-    props.theme === "DARK" ? "#f2f3f4" : "#0a0908"};
+    props.theme === THEME.DARK ? "#f2f3f4" : "#0a0908"};
 `;
 
 export const Flexbox = styled.div`
