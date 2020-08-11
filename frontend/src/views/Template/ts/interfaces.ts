@@ -28,3 +28,8 @@ export interface WorkProps {
 export interface WorkPictureProps {
   theme: ThemeType;
 }
+
+export interface SkillBulletProps {
+  rgb: [number, number, number];
+  theme: ThemeType;
+}

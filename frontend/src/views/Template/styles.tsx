@@ -8,6 +8,7 @@ import {
   AboutPictureProps,
   WorkProps,
   WorkPictureProps,
+  SkillBulletProps,
 } from "./ts/interfaces";
 
 // Constants:
@@ -330,7 +331,9 @@ export const AboutBody = styled.div`
 
 export const MyWork = styled.div`
   width: 80vw;
-  margin: 5em 0;
+  min-height: 150vh;
+  margin: 5em 10vw;
+  margin-bottom: 0;
   text-align: center;
 `;
 
@@ -348,6 +351,7 @@ export const Works = styled.div`
 
 export const Work = styled.div`
   display: inline-block;
+  vertical-align: bottom;
   width: ${(props: WorkProps) =>
     props.worksLength === 0 ? 0 : 80 / props.worksLength}vw;
   height: 20em;
@@ -408,4 +412,62 @@ export const WorkLink = styled.a`
   font-weight: 600;
   color: unset;
   text-decoration: none;
+`;
+
+export const SkillsWrapper = styled.div`
+  width: 80vw;
+  margin: 5em 0;
+`;
+
+export const Skills = styled.ul`
+  display: inline-block;
+  margin-top: 2em;
+  padding: 0;
+  column-width: 30vw;
+  column-count: 2;
+  column-gap: 2em;
+`;
+
+export const Skill = styled.li`
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+`;
+
+export const SkillBullet = styled.div`
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  margin-right: 1em;
+  background-color: ${(props: SkillBulletProps) =>
+    `rgb(${props.rgb[0]}, ${props.rgb[1]}, ${props.rgb[2]})`};
+  border-radius: 50%;
+  box-shadow: 0 0 10px -2px ${(props: SkillBulletProps) => (props.theme === THEME.DARK ? "#f2f3f4" : "#0a0908")};
+`;
+
+export const SkillLink = styled.a`
+  display: inline-block;
+  text-decoration: none;
+  color: unset;
+`;
+
+export const SkillName = styled.div`
+  font-size: 1.5em;
+  font-weight: 400;
+  transition: all 0.25s ease;
+
+  /* Galaxy Fold (phones, 350px and down) */
+  @media only screen and (max-width: 350px) {
+    font-size: 0.6em;
+  }
+
+  /* Extra small devices (phones, 768px and down) */
+  @media only screen and (max-width: 768px) and (min-width: 351px) {
+    font-size: 1em;
+  }
+
+  &:hover {
+    font-weight: 500;
+    transform: skewX(-10deg) translateX(0.1em);
+  }
 `;

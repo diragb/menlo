@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { connect } from "react-redux";
+import FlatColors from "flat-colors";
 
 // Typescript:
 import { InitialState } from "../../reducers/ts/interfaces";
@@ -40,6 +41,12 @@ import {
   WorkTitle,
   WorkBody,
   WorkLink,
+  SkillsWrapper,
+  Skills,
+  Skill,
+  SkillBullet,
+  SkillLink,
+  SkillName,
 } from "./styles";
 
 // Redux:
@@ -84,6 +91,93 @@ const Template = (props: TemplatePropsInterface) => {
       body:
         "Yes, I do underwater photography. Are you jealous yet of how amazing and OP I am? I'm far better than you are, you inconsequential rabbit.",
       link: "https://www.aaronzarabi.com/",
+    },
+  ];
+
+  const skills = [
+    {
+      name: "HTML",
+      link: "https://w3schools.com/html",
+    },
+    {
+      name: "CSS",
+      link: "https://w3schools.com/html",
+    },
+    {
+      name: "Javascript",
+      link: "https://w3schools.com/html",
+    },
+    {
+      name: "React Native",
+      link: "https://w3schools.com/html",
+    },
+    {
+      name: "React Native",
+      link: "https://w3schools.com/html",
+    },
+    {
+      name: "React Native",
+      link: "https://w3schools.com/html",
+    },
+    {
+      name: "React Native",
+      link: "https://w3schools.com/html",
+    },
+    {
+      name: "React Native",
+      link: "https://w3schools.com/html",
+    },
+    {
+      name: "React Native",
+      link: "https://w3schools.com/html",
+    },
+    {
+      name: "React Native",
+      link: "https://w3schools.com/html",
+    },
+    {
+      name: "React Native",
+      link: "https://w3schools.com/html",
+    },
+    {
+      name: "React Native",
+      link: "https://w3schools.com/html",
+    },
+    {
+      name: "React Native",
+      link: "https://w3schools.com/html",
+    },
+    {
+      name: "React Native",
+      link: "https://w3schools.com/html",
+    },
+    {
+      name: "React Native",
+      link: "https://w3schools.com/html",
+    },
+    {
+      name: "React Native",
+      link: "https://w3schools.com/html",
+    },
+    {
+      name: "React Native",
+      link: "https://w3schools.com/html",
+    },
+    {
+      name: "React Native",
+      link: "https://w3schools.com/html",
+    },
+    {
+      name: "React Native",
+      link: "https://w3schools.com/html",
+    },
+    {
+      name: "React Native",
+      link: "https://w3schools.com/html",
+    },
+    {
+      name: "React Native",
+      link: "https://w3schools.com/html",
     },
   ];
 
@@ -204,38 +298,53 @@ const Template = (props: TemplatePropsInterface) => {
           </About>
         </Flexbox>
         <Flexbox>
-          <MyWork>
-            <Title>Works</Title>
-            <Works>
-              {works.map((work, workIndex) => {
+          <SkillsWrapper>
+            <Title>Skills</Title>
+            <Skills>
+              {skills.map((skill, index) => {
                 return (
-                  <Work
-                    worksLength={works.length}
-                    workIndex={workIndex}
-                    key={work.id}
-                  >
-                    <WorkPictureWrapper>
-                      <WorkPicture src={work.picture} theme={props.theme} />
-                      <WorkDetails>
-                        <WorkTitle>{work.title}</WorkTitle>
-                        <WorkBody>
-                          {work.body}
-                          {work.link === null ? (
-                            <></>
-                          ) : (
-                            <WorkLink href={work.link} target="_blank">
-                              More.
-                            </WorkLink>
-                          )}
-                        </WorkBody>
-                      </WorkDetails>
-                    </WorkPictureWrapper>
-                  </Work>
+                  <Skill key={index}>
+                    <SkillBullet rgb={FlatColors()} theme={props.theme} />
+                    <SkillLink href={skill.link} target="_blank">
+                      <SkillName>{skill.name}</SkillName>
+                    </SkillLink>
+                  </Skill>
                 );
               })}
-            </Works>
-          </MyWork>
+            </Skills>
+          </SkillsWrapper>
         </Flexbox>
+        <MyWork>
+          <Title>Works</Title>
+          <Works>
+            {works.map((work, workIndex) => {
+              return (
+                <Work
+                  worksLength={works.length}
+                  workIndex={workIndex}
+                  key={work.id}
+                >
+                  <WorkPictureWrapper>
+                    <WorkPicture src={work.picture} theme={props.theme} />
+                    <WorkDetails>
+                      <WorkTitle>{work.title}</WorkTitle>
+                      <WorkBody>
+                        {work.body}
+                        {work.link === null ? (
+                          <></>
+                        ) : (
+                          <WorkLink href={work.link} target="_blank">
+                            More.
+                          </WorkLink>
+                        )}
+                      </WorkBody>
+                    </WorkDetails>
+                  </WorkPictureWrapper>
+                </Work>
+              );
+            })}
+          </Works>
+        </MyWork>
       </Wrapper>
     </SkeletonTheme>
   );
