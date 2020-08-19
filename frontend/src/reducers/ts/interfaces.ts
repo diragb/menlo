@@ -1,14 +1,15 @@
 // Typescript:
+import { ActionType, PayloadType } from '../../actions/ts/interfaces';
 import { ThemeType } from "../../constants/ts/interfaces";
 
 // Exports:
 export interface ActionInterface {
-  type: string;
-  payload: any;
-}
+  type: ActionType;
+  payload: PayloadType;
+};
 
-export interface InitialState {
+export interface StateInterface {
   global: {
     theme: ThemeType;
   };
-}
+};

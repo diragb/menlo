@@ -2,14 +2,16 @@
 import React, { useState, useEffect } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { connect } from "react-redux";
+import { useInput } from '../../hooks/input-hook';
 import FlatColors from "flat-colors";
 
 // Typescript:
-import { InitialState } from "../../reducers/ts/interfaces";
+import { StateInterface } from "../../reducers/ts/interfaces";
 import { TemplatePropsInterface } from "./ts/interfaces";
 
 // Imports:
 import { SOCIAL_MEDIA } from "../../constants/icons";
+import LOGO from "../../assets/icon.png";
 
 // Styles:
 import {
@@ -47,10 +49,24 @@ import {
   SkillBullet,
   SkillLink,
   SkillName,
+  ContactWrapper,
+  ContactComponents,
+  ContactFormWrapper,
+  Name,
+  NameInput,
+  Email,
+  EmailInput,
+  Message,
+  MessageBody,
+  Submit,
+  SubmitButton,
+  Footer,
+  LogoLink,
+  Logo
 } from "./styles";
 
 // Redux:
-const mapStateToProps = (state: InitialState) => {
+const mapStateToProps = (state: StateInterface) => {
   // Return:
   return {
     theme: state.global.theme,
@@ -63,6 +79,11 @@ const Template = (props: TemplatePropsInterface) => {
   const [profilePictureLoaded, setProfilePictureLoaded] = useState(false);
   const [aboutPictureLoaded, setAboutPictureLoaded] = useState(false);
   const [windowInnerWidth, setWindowInnerWidth] = useState(window.innerWidth);
+  const { value: name, bind: bindName, reset: resetName } = useInput('');
+  const { value: email, bind: bindEmail, reset: resetEmail } = useInput('');
+  const { value: contactMessage, bind: bindContactMessage, reset: resetContactMessage } = useInput('');
+
+  console.log(name, email, contactMessage);
 
   // Temp:
   const works = [
@@ -345,6 +366,36 @@ const Template = (props: TemplatePropsInterface) => {
             })}
           </Works>
         </MyWork>
+        <Flexbox>
+          <ContactWrapper>
+            <Title>Contact</Title>
+            <ContactComponents>
+              <ContactFormWrapper>
+                <Name>
+                  <NameInput type="text" placeholder="Name" {...bindName} theme={props.theme} />
+                </Name>
+                <Email>
+                  <EmailInput type="text" placeholder="name@email.com" {...bindEmail} theme={props.theme} />
+                </Email>
+                <Message>
+                  <MessageBody placeholder="Your message.." {...bindContactMessage} theme={props.theme} />
+                </Message>
+                <Submit>
+                  <SubmitButton tabIndex={0} onClick={() => {
+                    resetName();
+                    resetEmail();
+                    resetContactMessage();
+                  }} theme={props.theme}>SEND</SubmitButton>
+                </Submit>
+              </ContactFormWrapper>
+            </ContactComponents>
+          </ContactWrapper>
+        </Flexbox>
+        <Footer>
+          <LogoLink href="https://menlo.in" target="_blank">
+            <Logo src={LOGO} />
+          </LogoLink>
+        </Footer>
       </Wrapper>
     </SkeletonTheme>
   );

@@ -4,7 +4,7 @@ import { Parallax } from "react-scroll-parallax";
 import { connect } from "react-redux";
 
 // Typescript:
-import { InitialState } from "../../reducers/ts/interfaces";
+import { StateInterface } from "../../reducers/ts/interfaces";
 import { LandingPropsInterface } from "./ts/interfaces";
 
 // Imports:
@@ -54,7 +54,7 @@ import {
 } from "./styles";
 
 // Redux:
-const mapStateToProps = (state: InitialState) => {
+const mapStateToProps = (state: StateInterface) => {
   // Return:
   return {
     theme: state.global.theme,

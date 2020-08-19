@@ -1,7 +1,10 @@
+// Imports:
+import { DARK, LIGHT } from '../index';
+
 // Exports:
-export interface ThemeObjectType {
-  DARK: "DARK";
-  LIGHT: "LIGHT";
+export interface ThemeObjectInterface {
+  DARK: typeof DARK;
+  LIGHT: typeof LIGHT;
 }
 
-export type ThemeType = "DARK" | "LIGHT";
+export type ThemeType = typeof DARK | typeof LIGHT;

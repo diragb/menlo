@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from "react";
+import { useState } from "react";
 
 export const useInput = (initialValue: string) => {
   const [value, setValue] = useState(initialValue);
@@ -9,7 +9,7 @@ export const useInput = (initialValue: string) => {
     reset: () => setValue(""),
     bind: {
       value,
-      onChange: (event: ChangeEvent<HTMLInputElement>) => {
+      onChange: (event: any) => {
         event.preventDefault();
         event.stopPropagation();
         setValue(event.currentTarget.value);

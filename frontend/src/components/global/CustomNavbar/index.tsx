@@ -6,11 +6,10 @@ import { connect } from "react-redux";
 
 // Typescript:
 import { StateInterface } from "../../../reducers/ts/interfaces";
-import { NavbarPropsInterface } from "./ts/interfaces";
+import { CustomNavbarPropsInterface } from "./ts/interfaces";
 import { ThemeType } from "../../../constants/ts/interfaces";
 
 // Imports:
-import LOGO from "../../../assets/icon.png";
 import { LIGHT_BULB } from "../../../constants/icons";
 
 // Constants:
@@ -22,7 +21,6 @@ import {
   Wrapper,
   Container,
   CustomLink,
-  Icon,
   LeftContainer,
   LightBulb,
 } from "./styles";
@@ -43,7 +41,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 };
 
 // Functions:
-const Navbar = (props: NavbarPropsInterface) => {
+const CustomNavbar = (props: CustomNavbarPropsInterface) => {
   // Constants:
   const [cookies, setCookie] = useCookies(["theme"]);
 
@@ -53,6 +51,8 @@ const Navbar = (props: NavbarPropsInterface) => {
       setCookie("theme", THEME.LIGHT, { path: "/" });
     }
     props.toggleTheme(cookies.theme);
+    
+    // TODO: use props.SUBDOMAIN + axios to get data from backend.
   }, []);
 
   useEffect(() => {
@@ -84,11 +84,12 @@ const Navbar = (props: NavbarPropsInterface) => {
       </LeftContainer>
       <Container>
         <CustomLink to={ROUTES.INDEX}>
-          <Icon src={LOGO} />
+          {/* <Icon src={LOGO} /> */}
+          {props.SUBDOMAIN}
         </CustomLink>
       </Container>
     </Wrapper>
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
+export default connect(mapStateToProps, mapDispatchToProps)(CustomNavbar);

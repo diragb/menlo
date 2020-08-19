@@ -33,3 +33,15 @@ export interface SkillBulletProps {
   rgb: [number, number, number];
   theme: ThemeType;
 }
+
+export interface InputBoxProps {
+  theme: ThemeType;
+}
+
+export interface MessageBodyProps {
+  theme: ThemeType;
+}
+
+export interface SubmitButtonProps {
+  theme: ThemeType;
+}

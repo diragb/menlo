@@ -1,19 +1,19 @@
 // Typescript:
-import { ActionInterface, InitialState } from "./ts/interfaces";
+import { ActionInterface, StateInterface } from "./ts/interfaces";
 
 // Constants:
-import { TOGGLE_THEME } from "../constants/action-types";
+import { TOGGLE_THEME } from "../actions/action-types";
 
 import { THEME } from "../constants";
 
-const initialState: InitialState = {
+const initialState: StateInterface = {
   global: {
     theme: THEME.LIGHT,
   },
 };
 
 // Functions:
-const globalReducer = (state = initialState, action: ActionInterface) => {
+const reducer = (state = initialState, action: ActionInterface) => {
   switch (action.type) {
     case TOGGLE_THEME:
       return {
@@ -27,9 +27,5 @@ const globalReducer = (state = initialState, action: ActionInterface) => {
   }
 };
 
-// const rootReducer = combineReducers({
-//   global: globalReducer,
-// });
-
 // Exports:
-export default globalReducer;
+export default reducer;

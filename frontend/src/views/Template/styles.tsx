@@ -9,6 +9,9 @@ import {
   WorkProps,
   WorkPictureProps,
   SkillBulletProps,
+  InputBoxProps,
+  MessageBodyProps,
+  SubmitButtonProps
 } from "./ts/interfaces";
 
 // Constants:
@@ -331,7 +334,7 @@ export const AboutBody = styled.div`
 
 export const MyWork = styled.div`
   width: 80vw;
-  min-height: 150vh;
+  min-height: 100vh;
   margin: 5em 10vw;
   margin-bottom: 0;
   text-align: center;
@@ -470,4 +473,199 @@ export const SkillName = styled.div`
     font-weight: 500;
     transform: skewX(-10deg) translateX(0.1em);
   }
+`;
+
+export const ContactWrapper = styled.div`
+  width: 80vw;
+  margin: 5em 0;
+`;
+
+export const ContactComponents = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+
+export const ContactFormWrapper = styled.div`
+  display: inline-block;
+  vertical-align: middle;
+  width: 40vw;
+  height: 50vh;
+  margin-bottom: 0.5em;
+`;
+
+// export const ContactDivider = styled.div`
+//   display: inline-block;
+//   vertical-align: middle;
+//   width: 4vw;
+//   height: 50vh;
+// `;
+
+// export const ContactDividerLine = styled.div`
+//   width: 0.3em;
+//   height: 60%;
+//   background: #ccc;
+//   border-radius: 0.3em;
+// `;
+
+// export const ContactSocialMedia = styled.div`
+//   display: inline-block;
+//   vertical-align: middle;
+//   width: 40vw;
+//   height: 50vh;
+//   margin-top: 2em;
+//   margin-bottom: 0.5em;
+//   background: darkcyan;
+// `;
+
+const Input = styled.div`
+  margin: 1em 1em;
+  margin-left: 0.5em;
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 768px) {
+    margin-left: 0em;
+  }
+`;
+
+const InputBox = styled.input`
+  width: 20em;
+  height: 2em;
+  margin-bottom: 1em;
+  padding: 0.3em 1em;
+  border: none;
+  outline: none;
+  color: ${(props: InputBoxProps) =>
+    props.theme === THEME.DARK ? "#e6e6e6" : "#191919"};
+  background: ${(props: InputBoxProps) =>
+    props.theme === THEME.DARK ? "#191919" : "#e6e6e6"};
+  font-family: "Inter", sans-serif;
+  font-size: 1.3em;
+  border-radius: 0.3em;
+  transition: all 0.5s ease;
+
+  &:focus {
+    background: unset;
+    box-shadow: ${(props: InputBoxProps) =>
+    props.theme === THEME.DARK ? "0 0 20px rgba(255,255,255,0.1)" : "0 5px 20px rgba(0,0,0,0.1)"};
+    transition: all 0.25s ease;
+  }
+
+  &::placeholder {
+    color: #636e72;
+  }
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 768px) {
+    width: 65vw;
+  }
+`;
+
+export const Name = styled(Input)``;
+
+export const Email = styled(Input)``;
+
+export const NameInput = styled(InputBox)``;
+
+export const EmailInput = styled(InputBox)``;
+
+export const Message = styled.div`
+  margin: 1em 1em;
+  margin-left: 0.5em;
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 768px) {
+    margin-left: 0em;
+  }
+`;
+
+export const MessageBody = styled.textarea`
+  width: 25em;
+  height: 7em;
+  padding: 1em 1em;
+  border: none;
+  outline: none;
+  color: ${(props: MessageBodyProps) =>
+    props.theme === THEME.DARK ? "#e6e6e6" : "#191919"};
+  background: ${(props: MessageBodyProps) =>
+    props.theme === THEME.DARK ? "#191919" : "#e6e6e6"};
+  font-family: monospace;
+  font-size: 1.3em;
+  border-radius: 0.3em;
+  resize: none;
+  transition: all 0.5s ease;
+
+  &:focus {
+    background: unset;
+    box-shadow: ${(props: MessageBodyProps) =>
+    props.theme === THEME.DARK ? "0 0 20px rgba(255,255,255,0.1)" : "0 5px 20px rgba(0,0,0,0.1)"};
+    transition: all 0.25s ease;
+  }
+
+  &::placeholder {
+    color: #636e72;
+  }
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 768px) {
+    width: 67vw;
+  }
+`;
+
+export const Submit = styled.div`
+  margin: 1em 1em;
+  margin-top: 1.5em;
+  margin-left: 0.5em;
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 768px) {
+    margin-left: 0em;
+  }
+`;
+
+export const SubmitButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10em;
+  height: 3em;
+  font-weight: 700;
+  letter-spacing: 0.5em;
+  color: ${(props: SubmitButtonProps) =>
+    props.theme === THEME.DARK ? "#0a0908" : "#f2f3f4"};
+  background: ${(props: SubmitButtonProps) =>
+    props.theme === THEME.DARK ? "#f2f3f4" : "#0a0908"};
+  border: 1px solid
+      ${(props: SubmitButtonProps) =>
+        props.theme === THEME.DARK ? "#f2f3f4" : "#0a0908"};
+  border-radius: 0.3em;
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+
+  &:hover {
+    color: ${(props: SubmitButtonProps) =>
+      props.theme === THEME.DARK ? "#f2f3f4" : "#0a0908"};
+    background: unset;
+    border: 1px solid
+      ${(props: SubmitButtonProps) =>
+        props.theme === THEME.DARK ? "#f2f3f4" : "#0a0908"};
+    transition: all 0.25s ease;
+  }
+`;
+
+export const Footer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 5em;
+`;
+
+export const LogoLink = styled.a`
+  color: unset;
+  text-decoration: none;
+`;
+
+export const Logo = styled.img`
+  width: 2.5em;
 `;
