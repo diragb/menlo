@@ -9,6 +9,9 @@ import { ROUTES } from "./routes";
 import Navbar from "./components/global/Navbar";
 import CustomNavbar from "./components/global/CustomNavbar";
 import Landing from "./views/Landing";
+import PrivacyPolicy from "./views/PrivacyPolicy";
+import TermsOfService from "./views/TermsOfService";
+import CookiePolicy from "./views/CookiePolicy";
 import Template from "./views/Template";
 
 // Functions:
@@ -29,6 +32,9 @@ const App = () => {
       }
       <Switch>
         <Route exact path={[ROUTES.INDEX, ROUTES.HOME]} component={Landing} />
+        <Route exact path={ROUTES.TERMS_OF_SERVICE} component={TermsOfService} />
+        <Route exact path={ROUTES.PRIVACY_POLICY} component={PrivacyPolicy} />
+        <Route exact path={ROUTES.COOKIE_POLICY} component={CookiePolicy} />
         <Route exact path={ROUTES.TEMPLATE} component={Template} />
       </Switch>
     </>

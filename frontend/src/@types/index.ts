@@ -1,6 +1,13 @@
 export type Routes = {
-  INDEX: string;
-  HOME: string;
-  EDITOR: string;
-  TEMPLATE: string;
+  INDEX: "/",
+  HOME: "/home",
+  ABOUT: "/about",
+  TEAM: "/team",
+  CONTACT_US: "/contact",
+  SUPPORT: "/support",
+  TERMS_OF_SERVICE: "/tos",
+  PRIVACY_POLICY: "/pp",
+  COOKIE_POLICY: "/cp",
+  EDITOR: "/editor",
+  TEMPLATE: "/template",
 };

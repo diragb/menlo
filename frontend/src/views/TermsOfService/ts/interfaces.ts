@@ -2,7 +2,7 @@
 import { ThemeType } from "../../../constants/ts/interfaces";
 
 // Exports:
-export interface LandingPropsInterface {
+export interface TermsOfServiceInterface {
   theme: ThemeType;
 };
 
@@ -10,7 +10,7 @@ export interface WrapperProps {
   theme: ThemeType;
 };
 
-export interface IntroductionProps {
+export interface HeaderProps {
   theme: ThemeType;
 };
 
@@ -19,14 +19,11 @@ export interface TitleProps {
   theme: ThemeType;
 };
 
-export interface ButtonProps {
+export interface SubTitleProps {
+  viewRendered: boolean;
   theme: ThemeType;
 };
 
-export interface FeaturesProps {
+export interface LegalTextProps {
   theme: ThemeType;
-};
-
-export interface FeatureTitleProps {
-  theme: ThemeType;
-};
+}

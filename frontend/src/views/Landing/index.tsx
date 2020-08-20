@@ -13,10 +13,11 @@ import SIMPLE_BACKGROUND_DARK from "../../assets/simple-background-pure-black.jp
 import BEAUTIFUL_BACKGROUND_LIGHT from "../../assets/acrylic-background-2-light.jpg";
 import BEAUTIFUL_BACKGROUND_DARK from "../../assets/acrylic-background-2-dark.jpg";
 import COMPATIBLE_BACKGROUND from "../../assets/compatible-background-temp.jpg";
-import LOGO from "../../assets/icon.png";
+
+// Components:
+import Footer from "../../components/global/Footer";
 
 // Constants:
-import { ROUTES } from "../../routes";
 import { THEME } from "../../constants";
 
 // Styles:
@@ -42,15 +43,6 @@ import {
   TryNow,
   TryNowBlock,
   TryNowTitle,
-  Footer,
-  Categories,
-  Category,
-  CategoryTitle,
-  CategoryItem,
-  Ending,
-  EndingBlock,
-  Icon,
-  Copyright,
 } from "./styles";
 
 // Redux:
@@ -66,6 +58,7 @@ const Landing = (props: LandingPropsInterface) => {
   const [viewRendered, setViewRendered] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setViewRendered(true);
   }, []);
 
@@ -168,30 +161,7 @@ const Landing = (props: LandingPropsInterface) => {
           </TryNowBlock>
         </TryNow>
       </Wrapper>
-      <Footer theme={props.theme}>
-        <Categories>
-          <Category>
-            <CategoryTitle>menlo</CategoryTitle>
-            <CategoryItem to={ROUTES.HOME}>home</CategoryItem>
-            <CategoryItem to="/about">about</CategoryItem>
-            <CategoryItem to="/team">team</CategoryItem>
-            <CategoryItem to="/contact">contact us</CategoryItem>
-            <CategoryItem to="/support">support</CategoryItem>
-          </Category>
-          <Category>
-            <CategoryTitle>legal</CategoryTitle>
-            <CategoryItem to="/tos">terms of service</CategoryItem>
-            <CategoryItem to="/pp">privacy policy</CategoryItem>
-            <CategoryItem to="/cp">cookie policy</CategoryItem>
-          </Category>
-        </Categories>
-        <Ending>
-          <EndingBlock>
-            <Icon src={LOGO} />
-            <Copyright>copyright © 2020 menlo. all rights reserved.</Copyright>
-          </EndingBlock>
-        </Ending>
-      </Footer>
+      <Footer theme={props.theme} />
     </>
   );
 };
